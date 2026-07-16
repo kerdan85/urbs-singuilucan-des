@@ -1,5 +1,8 @@
 # urbs energy-system models — Singuilucan ecotourism lodging (six scenarios)
 
+[![DOI](https://zenodo.org/badge/1302255996.svg)](https://doi.org/10.5281/zenodo.21387231)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
+
 Distributed-energy-system (DES) optimisation models built on [`urbs`](https://github.com/tum-ens/urbs)
 (v1.0.1) for the study:
 
