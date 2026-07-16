@@ -1,0 +1,12 @@
+# Large regenerable model dumps (recreated by runme.py)
+*.h5
+
+# Python caches
+__pycache__/
+*.pyc
+*.pyo
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*~
