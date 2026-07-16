@@ -3,8 +3,8 @@
 Distributed-energy-system (DES) optimisation models built on [`urbs`](https://github.com/tum-ens/urbs)
 (v1.0.1) for the study:
 
-> **Integrated Building Energy Simulation and Energy Systems Optimisation Modelling
-> for Low-Carbon Design under Uncertain Demand**
+> **Coupling Building Energy Simulation with Energy-System Optimisation for
+> Low-Carbon Distributed Energy in Data-Scarce Rural Communities**
 > Iván Puente Antonio (UNAM) and Iván García Kerdan (Tecnológico de Monterrey).
 
 The models size and dispatch on-site generation and storage for a rural ecotourism
@@ -61,8 +61,9 @@ Outputs are written to `result/`. `Resultados.xlsx` aggregates the cost breakdow
 | Reference (BAU) | 166,013 | 176,592 | 181,216 |
 | Proposed (Passive) | 87,717 | 93,193 | 91,246 |
 
-The passive envelope roughly halves every DER portfolio and cuts total cost by 47–50 %
-(43–46 % including the estimated passive-construction premium).
+The passive envelope roughly halves every DER portfolio and cuts the energy-system cost by
+47–50 %; including the estimated passive-envelope + LED construction premium (~40,000 USD for
+the eight lodging units), the whole-life saving is 23–28 %.
 
 ## License
 
