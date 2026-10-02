@@ -1,7 +1,8 @@
 {
-  "title": "urbs energy-system models for a rural ecotourism lodging (six scenarios)",
+  "title": "urbs energy-system models for a rural ecotourism development (six scenarios)",
   "upload_type": "dataset",
-  "description": "Distributed-energy-system optimisation models (urbs 1.0.1) for a rural ecotourism lodging unit in Singuilucan, Hidalgo, Mexico. Six scenarios combine two building-envelope configurations (conventional 'BAU' and passive 'Proposed') with three operating settings (grid-connected, off-grid, and carbon-priced with a 25 to 120 USD/tCO2 trajectory). Each scenario is optimised over a representative week for planning years 2025, 2030, 2035 and 2040. Supports the paper 'Integrated Building Energy Simulation and Energy Systems Optimisation Modelling for Low-Carbon Design under Uncertain Demand'.",
+  "description": "Distributed-energy-system optimisation models (urbs 1.0.1) for a rural ecotourism development in Singuilucan, Hidalgo, Mexico. Six scenarios combine two building-envelope configurations (conventional 'BAU' and passive 'Proposed') with three operating settings (grid-connected, off-grid, and carbon-priced with a 25 to 120 USD/tCO2 trajectory). Each scenario is optimised over a representative week for planning years 2025, 2030, 2035 and 2040. A portable reproduction script (analysis/) regenerates the revision's sensitivity and robustness analyses with the open-source HiGHS solver. Supports the paper 'Building demand-side design reshapes distributed energy system sizing, storage and cost in a data-scarce rural development'.",
+  "version": "1.1.0",
   "license": "GPL-3.0-or-later",
   "access_right": "open",
   "keywords": [

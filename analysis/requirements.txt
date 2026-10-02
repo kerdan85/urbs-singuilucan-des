@@ -1,0 +1,8 @@
+# Reproduction environment for the sensitivity/robustness analyses.
+# Tested with Python 3.10-3.12.
+pyomo>=6.6
+highspy>=1.7      # open-source HiGHS solver (used via Pyomo's appsi_highs)
+pandas>=2.0
+numpy>=1.24
+openpyxl>=3.1
+matplotlib>=3.7   # only needed if regenerating figures

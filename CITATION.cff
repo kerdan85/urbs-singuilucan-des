@@ -1,13 +1,13 @@
 cff-version: 1.2.0
 message: "If you use these models, please cite the associated paper and this dataset."
-title: "urbs energy-system models for a rural ecotourism lodging (six scenarios)"
+title: "urbs energy-system models for a rural ecotourism development (six scenarios)"
 abstract: >-
   Distributed-energy-system optimisation models (urbs 1.0.1) for a rural ecotourism
-  lodging unit in Singuilucan, Hidalgo, Mexico, covering six scenarios that combine
+  development in Singuilucan, Hidalgo, Mexico, covering six scenarios that combine
   two building-envelope configurations (conventional and passive) with three operating
-  settings (grid-connected, off-grid and carbon-priced). Supports the paper "Integrated
-  Building Energy Simulation and Energy Systems Optimisation Modelling for Low-Carbon
-  Design under Uncertain Demand".
+  settings (grid-connected, off-grid and carbon-priced). Supports the paper "Building
+  demand-side design reshapes distributed energy system sizing, storage and cost in a
+  data-scarce rural development".
 type: dataset
 authors:
   - family-names: "Puente Antonio"
@@ -25,5 +25,5 @@ keywords:
   - carbon pricing
   - Mexico
 license: GPL-3.0
-version: "1.0.0"
-date-released: "2026-07-11"
+version: "1.1.0"
+date-released: "2026-10-02"
