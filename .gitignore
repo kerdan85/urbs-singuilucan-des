@@ -10,3 +10,7 @@ __pycache__/
 .DS_Store
 Thumbs.db
 *~
+
+# reproduction figure outputs
+analysis/figures/
+analysis/*.json

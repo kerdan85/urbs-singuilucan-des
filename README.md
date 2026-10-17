@@ -6,14 +6,14 @@
 Distributed-energy-system (DES) optimisation models built on [`urbs`](https://github.com/tum-ens/urbs)
 (v1.0.1) for the study:
 
-> **Building demand-side design reshapes distributed energy system sizing,
+> **Building demand-side strategies reshape distributed energy system sizing,
 > storage and cost in a data-scarce rural development**
 > Iván Puente Antonio (UNAM) and Iván García Kerdan (Tecnológico de Monterrey).
 
 The models size and dispatch on-site generation and storage for a rural ecotourism
 development in Singuilucan, Hidalgo, Mexico. Hourly demand profiles are produced with
 IES VE (building physics) and passed to `urbs` (linear optimisation). Each scenario is
-optimised over a representative week (120 hourly steps) for four planning years
+optimised over four seasonal representative weeks (480 hourly steps) for four planning years
 (2025, 2030, 2035, 2040).
 
 ## Scenario design (2 × 3)
@@ -38,7 +38,7 @@ in 2025, 2030, 2035 and 2040 respectively.
 BAU/ , Proposed/            one urbs copy per scenario
   urbs-1.0.1-*/
     Input/2025..2040.xlsx   model inputs per planning year
-    runme.py                run script (timesteps 2329–2449 = representative week)
+    runme.py                single-week run script (see analysis/ for the four-season main results)
     urbs/                   urbs source (GPL-3.0)
     result/                 outputs: *.xlsx, dispatch *.png  (large *.h5 not tracked)
 Resultados.xlsx             consolidated cost comparison across scenarios
@@ -56,8 +56,11 @@ cd BAU/urbs-1.0.1-BAU
 python runme.py
 ```
 
-Outputs are written to `result/`. `Resultados.xlsx` aggregates the cost breakdown
-(`Costs` sheet) used in the paper.
+Outputs are written to `result/`. Each scenario's `runme.py` solves the single
+maximum-demand week (`timesteps 2329–2449`), which corresponds to the single-week
+*sensitivity* case in the paper. **The paper's main results use four seasonal
+representative weeks and are reproduced by `analysis/reproduce_analyses.py`** (see
+`analysis/README.md`), which rebuilds the four-week input series and solves with HiGHS.
 
 > **pandas >= 2 note.** urbs 1.0.1 was written for pandas 1.x. Under pandas >= 2,
 > replace `pd.core.index.MultiIndex` with `pd.MultiIndex` in `urbs/input.py`
@@ -66,29 +69,34 @@ Outputs are written to `result/`. `Resultados.xlsx` aggregates the cost breakdow
 
 ## Analysis & reproducibility
 
-The `analysis/` folder contains `reproduce_analyses.py`, a self-contained script
-that regenerates the sensitivity and robustness results added during revision
-(zero export-compensation, +/-25% technology-cost sensitivity, the carbon-price
-heat-dispatch threshold, and off-grid sizing across time horizons). It solves with
-HiGHS and maps each output to the corresponding paper table/figure. See
-`analysis/README.md` for details and `analysis/requirements.txt` for the
-environment.
+The `analysis/` folder contains two self-contained scripts that solve with the
+open-source HiGHS solver and map each output to the corresponding paper table/figure
+(see `analysis/README.md` for details and `analysis/requirements.txt` for the environment):
+
+- `reproduce_analyses.py` — the sizing sensitivity and robustness results (zero
+  export-compensation, +/-25% technology-cost sensitivity, the carbon-price
+  heat-dispatch threshold, and off-grid sizing across time horizons).
+- `full_year_operation.py` — the chronological full-year (8,760-hour) operational
+  simulation of each fixed design: annual self-sufficiency, self-consumption,
+  grid exchange, off-grid loss-of-load and battery cycles (Section 4.9, Table 11, Fig. 15).
 
 ```bash
 pip install -r analysis/requirements.txt
 python analysis/reproduce_analyses.py
+python analysis/full_year_operation.py
 ```
 
 ## Key results (system cost over the 15-year horizon, USD)
 
 | | S1/S4 Grid | S2/S5 Off-grid | S3/S6 Carbon-priced |
 |---|---|---|---|
-| Reference (BAU) | 166,013 | 176,592 | 181,216 |
-| Proposed (Passive) | 87,717 | 93,193 | 91,246 |
+| Reference (BAU) | 164,860 | 202,455 | 209,890 |
+| Proposed (Passive) | 89,077 | 106,817 | 94,315 |
 
 The demand-side (passive-envelope + LED) design roughly halves every DER portfolio and cuts
-the energy-system cost by 47–50 %; including the estimated ~50,000 USD passive-envelope + LED
-construction premium for the development, the whole-life saving is 17–22 %.
+the energy-system cost by 46–55 %; including the estimated ~50,000 USD passive-envelope + LED
+construction premium for the development, the whole-life saving is 16–31 %. (Values on the
+four-season representative-period basis; see `analysis/`.)
 
 ## License
 

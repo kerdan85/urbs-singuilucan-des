@@ -5,8 +5,8 @@ abstract: >-
   Distributed-energy-system optimisation models (urbs 1.0.1) for a rural ecotourism
   development in Singuilucan, Hidalgo, Mexico, covering six scenarios that combine
   two building-envelope configurations (conventional and passive) with three operating
-  settings (grid-connected, off-grid and carbon-priced). Supports the paper "Building
-  demand-side design reshapes distributed energy system sizing, storage and cost in a
+  settings (grid-connected, off-grid and carbon-priced). Supports the paper "Building demand-side
+  strategies reshape distributed energy system sizing, storage and cost in a
   data-scarce rural development".
 type: dataset
 authors:
@@ -25,5 +25,5 @@ keywords:
   - carbon pricing
   - Mexico
 license: GPL-3.0
-version: "1.1.0"
-date-released: "2026-10-02"
+version: "1.2.0"
+date-released: "2026-10-03"
