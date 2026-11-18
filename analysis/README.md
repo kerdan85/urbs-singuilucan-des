@@ -87,3 +87,35 @@ treated as curtailable. Off-grid loss-of-load is a conservative upper bound (no
 inter-month hydrogen carryover) and comes out small (~0.5-1% of annual demand),
 confirming that the four-season sizing is operationally adequate. Run time is a few
 minutes per scenario on commodity hardware.
+
+## Second-revision additions
+
+Two further scripts regenerate the analyses added in the second revision. Both
+reuse the same four-season harness (`reproduce_analyses` / `full_year_operation`),
+so no new dependencies or setup are required.
+
+```bash
+python analysis/extra_sensitivities.py          # all four below, or pass: battery land demand variants carbon
+python analysis/reliability_metrics.py          # off-grid loss-of-load metrics (S2, S5)
+```
+
+`extra_sensitivities.py` — reviewer-requested sensitivity analyses (Section 4.6):
+
+| Function | Paper reference |
+|---|---|
+| `battery_power()`    | MC4: battery energy/power sizing and a 150 USD/kW power-conversion (inverter/PCS) cost; realistic ~0.2 C-rate (Table 7 caption) |
+| `land_area()`        | MC8: land-availability sensitivity (installation area 400/200/150/100 m²) |
+| `demand_scaling()`   | MC6: aggregate ±15% scaling of the building electricity demand |
+| `demand_variants()`  | MC6: six physics-based IES VE building-model variants per building (HVAC COP ±15%, internal gains ±20%, infiltration ±30%), read from `iesve_demand_variants.csv`; passive advantage holds at 42.9-47.1% |
+| `carbon_sweep()`     | MC9: continuous carbon-price sweep on the grid-connected reference, locating the boiler→heat-pump transition near 130 USD/tCO₂ (Fig. 12) |
+
+`reliability_metrics.py` — off-grid full-year reliability detail (MC1, Section 4.7):
+fixes each off-grid design and simulates its hourly dispatch month by month over the
+full TMY year (cyclic storage per month, no inter-month hydrogen carry-over), then
+reports annual energy not served, self-sufficiency, the number of loss-of-load
+events and the longest consecutive outage.
+
+`iesve_demand_variants.csv` holds the hourly (8,760 h) development-level electricity
+demand for the reference (`BAU_*`) and proposed (`Prop_*`) buildings under each IES VE
+variant, plus the common thermal load (`heat`), as simulated in IES VE for the second
+revision.
